@@ -305,7 +305,7 @@ export default function App() {
       setActiveSource("All");
       try {
         const res = await axios.get(
-          `http://localhost:8000/search?q=${encodeURIComponent(term)}&pages=2`,
+          `https://priceng-backend.onrender.com/search?q=${encodeURIComponent(term)}&pages=2`,
         );
         setResults(res.data.results ?? []);
       } catch (err) {
