@@ -305,7 +305,7 @@ export default function App() {
       try {
         const res = await axios.get(
           `https://priceng-backend.onrender.com/search?q=${encodeURIComponent(term)}&pages=2`,
-        );
+        );git 
         setResults(res.data.results ?? []);
       } catch (err) {
         setError(
