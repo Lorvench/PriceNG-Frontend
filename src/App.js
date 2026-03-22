@@ -308,10 +308,13 @@ export default function App() {
         );
         setResults(res.data.results ?? []);
       } catch (err) {
-        setError(
-          err.response?.data?.detail ||
-            "Backend unreachable — make sure it's running on port 8000.",
-        );
+        const detail = err.response?.data?.detail;
+        const msg = Array.isArray(detail)
+          ? detail.map((d) => d.msg || JSON.stringify(d)).join(", ")
+          : typeof detail === "string"
+            ? detail
+            : err.message || "Backend unreachable — make sure it's running.";
+        setError(msg);
       } finally {
         setLoading(false);
       }
