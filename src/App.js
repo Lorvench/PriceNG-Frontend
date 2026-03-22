@@ -63,18 +63,17 @@ function Spinner() {
 
 function SkeletonCard() {
   return (
-    <div className="flex flex-col rounded-2xl overflow-hidden bg-white/[0.04] border border-white/[0.07] animate-pulse">
-      <div className="h-36 bg-white/[0.06]" />
-      <div className="p-5 flex flex-col gap-3">
-        <div className="h-4 w-14 bg-white/[0.08] rounded-full" />
-        <div className="h-3 bg-white/[0.08] rounded w-full" />
-        <div className="h-3 bg-white/[0.08] rounded w-4/5" />
-        <div className="h-3 bg-white/[0.08] rounded w-3/5 mt-1" />
-        <div className="h-7 w-28 bg-white/[0.08] rounded mt-1" />
+    <div className="flex flex-col rounded-xl sm:rounded-2xl overflow-hidden bg-white/[0.04] border border-white/[0.07] animate-pulse">
+      <div className="h-28 sm:h-36 bg-white/[0.06]" />
+      <div className="p-3 sm:p-5 flex flex-col gap-2 sm:gap-3">
+        <div className="h-3.5 w-12 bg-white/[0.08] rounded-full" />
+        <div className="h-2.5 bg-white/[0.08] rounded w-full" />
+        <div className="h-2.5 bg-white/[0.08] rounded w-4/5" />
+        <div className="h-6 w-24 bg-white/[0.08] rounded mt-1" />
         <div className="h-px bg-white/[0.06] mt-1" />
         <div className="flex items-center justify-between">
-          <div className="h-3 w-14 bg-white/[0.08] rounded" />
-          <div className="h-3 w-8 bg-white/[0.06] rounded" />
+          <div className="h-2.5 w-12 bg-white/[0.08] rounded" />
+          <div className="h-2.5 w-8 bg-white/[0.06] rounded" />
         </div>
       </div>
     </div>
@@ -155,7 +154,7 @@ function ProductCard({ product, index }) {
 
   return (
     <div
-      className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl ${isBest ? "bg-emerald-950/40 border border-emerald-500/30 hover:border-emerald-400/60 hover:shadow-emerald-900/30" : "bg-white/[0.04] border border-white/[0.07] hover:border-white/[0.16]"}`}
+      className={`relative flex flex-col rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl ${isBest ? "bg-emerald-950/40 border border-emerald-500/30 hover:border-emerald-400/60 hover:shadow-emerald-900/30" : "bg-white/[0.04] border border-white/[0.07] hover:border-white/[0.16]"}`}
       style={{
         animation: "fadeUp .45s ease both",
         animationDelay: `${index * 45}ms`,
@@ -165,7 +164,7 @@ function ProductCard({ product, index }) {
       )}
 
       {/* Product image */}
-      <div className="relative h-36 bg-white/[0.03] overflow-hidden flex-shrink-0">
+      <div className="relative h-28 sm:h-36 bg-white/[0.03] overflow-hidden flex-shrink-0">
         {product.image ? (
           <img
             src={product.image}
@@ -189,7 +188,7 @@ function ProductCard({ product, index }) {
         )}
       </div>
 
-      <div className="flex flex-col flex-1 p-4">
+      <div className="flex flex-col flex-1 p-3 sm:p-4">
         {isBest && (
           <div className="flex items-center gap-1.5 bg-emerald-400 text-black text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full w-fit mb-3">
             <IconBolt /> Best Price
@@ -207,7 +206,7 @@ function ProductCard({ product, index }) {
           </span>
         </div>
 
-        <p className="text-[13px] text-white/80 leading-relaxed mb-3 line-clamp-2 flex-1 font-light">
+        <p className="text-[11px] sm:text-[13px] text-white/80 leading-snug sm:leading-relaxed mb-2 sm:mb-3 line-clamp-2 flex-1 font-light">
           {product.name}
         </p>
 
@@ -245,7 +244,7 @@ function ProductCard({ product, index }) {
           <div className="flex items-baseline gap-1">
             <span className="text-sm text-white/40 font-medium">₦</span>
             <span
-              className={`text-2xl font-black leading-none tracking-tight ${isBest ? "text-emerald-400" : "text-white"}`}
+              className={`text-xl sm:text-2xl font-black leading-none tracking-tight ${isBest ? "text-emerald-400" : "text-white"}`}
               style={{ fontFamily: "'Syne', sans-serif" }}>
               {Number(product.price).toLocaleString()}
             </span>
@@ -479,7 +478,7 @@ export default function App() {
               <div className="h-4 w-36 bg-white/[0.07] rounded animate-pulse" />
               <div className="h-4 w-24 bg-white/[0.07] rounded animate-pulse" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-3.5">
               {Array.from({ length: 8 }).map((_, i) => (
                 <SkeletonCard key={i} />
               ))}
@@ -530,7 +529,7 @@ export default function App() {
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-3.5">
               {filteredResults.map((product, i) => (
                 <ProductCard
                   key={product.url || i}
